@@ -1,6 +1,10 @@
+var fs = require('fs');
 module.exports = function (app) {
-    app.get('/some/path', function (req, res) {
-        res.json({ custom: 'response' });
+    app.get('/get/weibo', function (req, res) {
+        let data = fs.readFileSync('./card-data.json');
+        setTimeout(() => {
+            res.json(JSON.parse(data.toString()));
+        }, 1000);
     });
     app.post('/login', function (req, res) {
         let rawData = '';
@@ -18,4 +22,5 @@ module.exports = function (app) {
             }
         });
     });
+
 };

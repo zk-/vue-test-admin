@@ -14,12 +14,10 @@
         <!-- <a-menu-item key="3"><router-link to="">nav 3</router-link></a-menu-item> -->
       </a-menu>
     </a-layout-header>
-    <a-layout-content :style="{ padding: '0 50px', marginTop: '64px' }">
-        <div :style="{ background: '#fff', padding: '24px', minHeight: '380px',marginTop:'40px' }">
+    <a-layout-content class="content-container">
         <transition :name="page" mode="out-in">
             <router-view></router-view>
         </transition>
-        </div>
     </a-layout-content>
     <a-layout-footer :style="{ textAlign: 'center' }">
       Ant Design ©2018 Created by Ant UED
@@ -52,6 +50,13 @@ export default {
 </script>
 
 <style>
+.content-container{
+  padding: 24px 24px;
+  overflow: hidden;
+  background: #fff;
+  margin: 100px 24px 0 24px;
+  min-height: 380px !important;
+}
 #main-container .logo {
     height: 31px;
     background: rgba(255,255,255,.2);
