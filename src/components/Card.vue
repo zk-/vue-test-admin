@@ -2,12 +2,12 @@
   <div class="card">
     <p v-html="data.text"></p>
     <div class="imgs-container">
-        <div v-if="toggle.flag" class="gallerys">
+        <div v-show="toggle.flag" class="gallerys">
             <div class="img-item" v-for="(item, index) in data.pics" :key="index" @click="toggleImg(index)">
                 <img :src="item.url" alt="">
             </div>
         </div>
-        <div class="large-gallery" v-else @click="toggleImg">
+        <div class="large-gallery" v-show="!toggle.flag" @click="toggleImg">
             <img :src="toggle.url" alt="">
         </div>
     </div>

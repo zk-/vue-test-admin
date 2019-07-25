@@ -6,11 +6,12 @@
       <a-menu
         theme="dark"
         mode="horizontal"
-        :defaultSelectedKeys="['0']"
+        :defaultSelectedKeys="['/']"
+        :selectedKeys="[$route.path]"
         :style="{ lineHeight: '64px' }"
       >
-        <a-menu-item key="0"><router-link to="/">nav 1</router-link></a-menu-item>
-        <a-menu-item key="1"><router-link to="/test">nav 2</router-link></a-menu-item>
+        <a-menu-item key="/"><router-link to="/">nav 1</router-link></a-menu-item>
+        <a-menu-item key="/test"><router-link to="/test">nav 2</router-link></a-menu-item>
         <!-- <a-menu-item key="3"><router-link to="">nav 3</router-link></a-menu-item> -->
       </a-menu>
     </a-layout-header>

@@ -2,7 +2,7 @@
   <div class="home">
     <a-row class="home-a-row">
       <a-col :span="6">左侧栏</a-col>
-      <a-col :span="12" class="no-scroll middle-content" :class="{load:loading}">
+      <a-col :span="12" class="no-scroll middle-content" :class="{load:loading}" @scroll="loadMore">
         <a-skeleton active :loading="loading">
           <div>
             <template v-for="card in cardData">
@@ -29,16 +29,33 @@ export default {
     return {
       cardData:[],
       loading:true,
+      page:1,
+      isPullLoad:false,
     }
   },
   mounted:function() {
-    let vm = this;
-    axios.get('/get/weibo').then((resp) =>{
-      vm.cardData = resp.data;
-    }).finally(() => {
-      vm.loading = false;
-      vm.$message.info('更新完成！',1);
-    })
+    this.loadData(1)
+    this.page += 1;
+  },
+  methods:{
+    loadMore:function(e) {
+      let vm = this;
+      if (!vm.isPullLoad && e.target.scrollHeight - (e.target.scrollTop + e.target.clientHeight) < 400) {
+        vm.isPullLoad = true;
+        vm.loadData(vm.page);
+        vm.page += 1;
+      }
+    },
+    loadData:function(page) {
+      let vm = this;
+      axios.get('/get/weibo',{params:{page:page}}).then((resp) =>{
+        vm.cardData = vm.cardData.concat(resp.data);
+      }).finally(() => {
+        vm.loading = false;
+        vm.isPullLoad = false;
+        vm.$message.info('更新完成！',1);
+      })
+    }
   }
 }
 </script>
