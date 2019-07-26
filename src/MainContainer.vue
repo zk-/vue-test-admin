@@ -12,6 +12,7 @@
       >
         <a-menu-item key="/"><router-link to="/">nav 1</router-link></a-menu-item>
         <a-menu-item key="/test"><router-link to="/test">nav 2</router-link></a-menu-item>
+        <a-menu-item key="/ex"><router-link to="/ex">ex</router-link></a-menu-item>
         <!-- <a-menu-item key="3"><router-link to="">nav 3</router-link></a-menu-item> -->
       </a-menu>
     </a-layout-header>

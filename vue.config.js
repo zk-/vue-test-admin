@@ -4,6 +4,5 @@ module.exports = {
         before: function (app, server) {
             mock(app);
         },
-        proxy:'http://jandan.net/' //test proxy
     },
 };

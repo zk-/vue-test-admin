@@ -4,9 +4,10 @@ import Container from './MainContainer';
 import Login from './Login';
 import Home from './views/Home.vue';
 import test from "./views/test.vue";
+import ex from "./views/ex.vue";
 import axios from 'axios';
 
-Vue.use(Router)
+Vue.use(Router);
 
 var router = new Router({
   routes: [
@@ -23,6 +24,11 @@ var router = new Router({
           path: '/test',
           name: 'test',
           component: test
+        },
+        {
+          path: '/ex',
+          name: 'ex',
+          component: ex
         },
       ]
     },
